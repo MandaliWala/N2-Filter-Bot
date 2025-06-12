@@ -8,7 +8,7 @@ COPY requirements.txt /requirements.txt
 
 RUN cd /
 RUN pip3 install -U pip && pip3 install -U -r requirements.txt
-RUN mkdir /Auto-FILTER-BOT
-WORKDIR /Auto-FILTER-BOT
-COPY . /Auto-FILTER-BOT
+RUN mkdir /N2-Filter-Bot
+WORKDIR /N2-Filter-Bot
+COPY . /N2-Filter-Bot
 CMD ["python", "bot.py"]
