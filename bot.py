@@ -29,7 +29,7 @@ from sample_info import tempDict
 from plugins import web_server
 
 from Naman.bot import NamanBot
-from Naman.util.keepalive import ping_server
+from Naman.util.keepalive import keep_alive, ping_server
 from Naman.bot.clients import initialize_clients
 
 ppath = "plugins/*.py"
@@ -89,6 +89,7 @@ async def start():
     await app.setup()
     bind_address = "0.0.0.0"
     await web.TCPSite(app, bind_address, PORT).start()
+    NamanBot.loop.create_task(keep_alive())
     await idle()
 
 

@@ -5,6 +5,18 @@ import traceback
 from info import *
 
 
+async def keep_alive():
+    """Keep bot alive by sending periodic pings."""
+    async with aiohttp.ClientSession() as session:
+        while True:
+            await asyncio.sleep(298)
+            try:
+                async with session.get(URL) as resp:
+                    if resp.status != 200:
+                        logging.warning(f"⚠️ Ping Error! Status: {resp.status}")
+            except Exception as e:
+                logging.error(f"❌ Ping Failed: {e}")
+
 async def ping_server():
     sleep_time = PING_INTERVAL
     while True:
