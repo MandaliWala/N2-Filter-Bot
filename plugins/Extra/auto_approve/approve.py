@@ -117,7 +117,10 @@ async def auto_approve(client, message: ChatJoinRequest):
             chat_id = int("-" + file_id.split("-")[1])
             userid = message.from_user.id if message.from_user else None
             settings = await get_settings(chat_id)
-            g = await get_shortlink(chat_id, f"https://telegram.me/{temp.U_NAME}?start=allfiles_{file_id}")
+            if WEBSITE_URL_MODE == True:
+                g = await get_shortlink(chat_id, f"{WEBSITE_URL}?Naman=allfiles_{file_id}")
+            else:
+                g = await get_shortlink(chat_id, f"https://telegram.me/{temp.U_NAME}?start=allfiles_{file_id}")
             button = [[
                 InlineKeyboardButton('📂 Dᴏᴡɴʟᴏᴀᴅ Nᴏᴡ 📂', url=g)
             ],[
@@ -134,7 +137,10 @@ async def auto_approve(client, message: ChatJoinRequest):
             settings = await get_settings(chat_id)
             files_ = await get_file_details(file_id)
             files = files_[0]
-            g = await get_shortlink(chat_id, f"https://telegram.me/{temp.U_NAME}?start=file_{file_id}")
+            if WEBSITE_URL_MODE == True:
+                g = await get_shortlink(chat_id, f"{WEBSITE_URL}?Naman=file_{file_id}")
+            else:
+                g = await get_shortlink(chat_id, f"https://telegram.me/{temp.U_NAME}?start=file_{file_id}")
             button = [[
                 InlineKeyboardButton('📂 Dᴏᴡɴʟᴏᴀᴅ Nᴏᴡ 📂', url=g)
             ],[
@@ -219,7 +225,10 @@ async def auto_approve(client, message: ChatJoinRequest):
             if settings['is_shortlink'] and not await db.has_premium_access(user):
                 files_ = await get_file_details(file_id)
                 files = files_[0]
-                g = await get_shortlink(chat_id, f"https://telegram.me/{temp.U_NAME}?start=file_{file_id}")
+                if WEBSITE_URL_MODE == True:
+                    g = await get_shortlink(chat_id, f"{WEBSITE_URL}?Naman=file_{file_id}")
+                else:
+                    g = await get_shortlink(chat_id, f"https://telegram.me/{temp.U_NAME}?start=file_{file_id}")
                 button = [[
                     InlineKeyboardButton('📂 Dᴏᴡɴʟᴏᴀᴅ Nᴏᴡ 📂', url=g)
                 ],[
