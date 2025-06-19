@@ -1334,7 +1334,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     else:
                         await query.answer(f"Hᴇʏ {query.from_user.first_name}, Tʜɪs Is Nᴏᴛ Yᴏᴜʀ Mᴏᴠɪᴇ Rᴇǫᴜᴇsᴛ. Rᴇǫᴜᴇsᴛ Yᴏᴜʀ's !", show_alert=True)
                 else:
-                    await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
+                    if WEBSITE_URL_MODE == True:
+                        if clicked == typed:
+                            temp.SHORT[clicked] = query.message.chat.id
+                            await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=redirect_{file_id}")
+                            return
+                        else:
+                            await query.answer(f"Hᴇʏ {query.from_user.first_name}, Tʜɪs Is Nᴏᴛ Yᴏᴜʀ Mᴏᴠɪᴇ Rᴇǫᴜᴇsᴛ. Rᴇǫᴜᴇsᴛ Yᴏᴜʀ's !", show_alert=True)
+                    else:
+                        await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
             elif settings['is_shortlink'] and await db.has_premium_access(query.from_user.id):
                 if clicked == typed:
                     await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
@@ -1343,11 +1351,19 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     await query.answer(f"Hᴇʏ {query.from_user.first_name}, Tʜɪs Is Nᴏᴛ Yᴏᴜʀ Mᴏᴠɪᴇ Rᴇǫᴜᴇsᴛ. Rᴇǫᴜᴇsᴛ Yᴏᴜʀ's !", show_alert=True)
                     
             else:
-                if clicked == typed:
-                    await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
-                    return
+                if WEBSITE_URL_MODE == True:
+                    if clicked == typed:
+                        temp.SHORT[clicked] = query.message.chat.id
+                        await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=redirect_{file_id}")
+                        return
+                    else:
+                        await query.answer(f"Hᴇʏ {query.from_user.first_name}, Tʜɪs Is Nᴏᴛ Yᴏᴜʀ Mᴏᴠɪᴇ Rᴇǫᴜᴇsᴛ. Rᴇǫᴜᴇsᴛ Yᴏᴜʀ's !", show_alert=True)
                 else:
-                    await query.answer(f"Hᴇʏ {query.from_user.first_name}, Tʜɪs Is Nᴏᴛ Yᴏᴜʀ Mᴏᴠɪᴇ Rᴇǫᴜᴇsᴛ. Rᴇǫᴜᴇsᴛ Yᴏᴜʀ's !", show_alert=True)
+                    if clicked == typed:
+                        await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
+                        return
+                    else:
+                        await query.answer(f"Hᴇʏ {query.from_user.first_name}, Tʜɪs Is Nᴏᴛ Yᴏᴜʀ Mᴏᴠɪᴇ Rᴇǫᴜᴇsᴛ. Rᴇǫᴜᴇsᴛ Yᴏᴜʀ's !", show_alert=True)
         except UserIsBlocked:
             await query.answer('Uɴʙʟᴏᴄᴋ ᴛʜᴇ ʙᴏᴛ ᴍᴀʜɴ !', show_alert=True)
         except PeerIdInvalid:
@@ -1365,7 +1381,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=sendfiles1_{key}")
                     
                 else:
-                    await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=allfiles_{key}")
+                    if WEBSITE_URL_MODE == True:
+                        await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=rsendfiles1_{key}")
+                    else:
+                        await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=allfiles_{key}")
             elif settings['is_shortlink'] and await db.has_premium_access(query.from_user.id):
                 await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=allfiles_{key}")
                 return 
@@ -1377,10 +1396,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
         except UserIsBlocked:
             await query.answer('Uɴʙʟᴏᴄᴋ ᴛʜᴇ ʙᴏᴛ ᴍᴀʜɴ !', show_alert=True)
         except PeerIdInvalid:
-            await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=sendfiles3_{key}")
+            if WEBSITE_URL_MODE == True:
+                await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=rsendfiles3_{key}")
+            else:
+                await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=sendfiles3_{key}")
         except Exception as e:
             logger.exception(e)
-            await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=sendfiles4_{key}")
+            if WEBSITE_URL_MODE == True:
+                await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=sendfiles4_{key}")
+            else:
+                await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=sendfiles4_{key}")
    
     elif query.data.startswith("del"):
         ident, file_id = query.data.split("#")
