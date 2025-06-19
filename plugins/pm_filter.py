@@ -1329,49 +1329,31 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 if SHORTLINK_MODE == True:
                     if clicked == typed:
                         temp.SHORT[clicked] = query.message.chat.id
-                        if WEBSITE_URL_MODE == True:
-                            await query.answer(url=f"{WEBSITE_URL}?Naman=short_{file_id}")
-                        else:
-                            await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=short_{file_id}")
+                        await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=short_{file_id}")
                         return
                     else:
                         await query.answer(f"Hᴇʏ {query.from_user.first_name}, Tʜɪs Is Nᴏᴛ Yᴏᴜʀ Mᴏᴠɪᴇ Rᴇǫᴜᴇsᴛ. Rᴇǫᴜᴇsᴛ Yᴏᴜʀ's !", show_alert=True)
                 else:
-                    if WEBSITE_URL_MODE == True:
-                        await query.answer(url=f"{WEBSITE_URL}?Naman={ident}_{file_id}")
-                    else:
-                        await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
+                    await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
             elif settings['is_shortlink'] and await db.has_premium_access(query.from_user.id):
                 if clicked == typed:
-                    if WEBSITE_URL_MODE == True:
-                        await query.answer(url=f"{WEBSITE_URL}?Naman={ident}_{file_id}")
-                    else:
-                        await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
+                    await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
                     return
                 else:
                     await query.answer(f"Hᴇʏ {query.from_user.first_name}, Tʜɪs Is Nᴏᴛ Yᴏᴜʀ Mᴏᴠɪᴇ Rᴇǫᴜᴇsᴛ. Rᴇǫᴜᴇsᴛ Yᴏᴜʀ's !", show_alert=True)
                     
             else:
                 if clicked == typed:
-                    if WEBSITE_URL_MODE == True:
-                        await query.answer(url=f"{WEBSITE_URL}?Naman={ident}_{file_id}")
-                    else:
-                        await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
+                    await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
                     return
                 else:
                     await query.answer(f"Hᴇʏ {query.from_user.first_name}, Tʜɪs Is Nᴏᴛ Yᴏᴜʀ Mᴏᴠɪᴇ Rᴇǫᴜᴇsᴛ. Rᴇǫᴜᴇsᴛ Yᴏᴜʀ's !", show_alert=True)
         except UserIsBlocked:
             await query.answer('Uɴʙʟᴏᴄᴋ ᴛʜᴇ ʙᴏᴛ ᴍᴀʜɴ !', show_alert=True)
         except PeerIdInvalid:
-            if WEBSITE_URL_MODE == True:
-                await query.answer(url=f"{WEBSITE_URL}?Naman={ident}_{file_id}")
-            else:
-                await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
+            await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
         except Exception as e:
-            if WEBSITE_URL_MODE == True:
-                await query.answer(url=f"{WEBSITE_URL}?Naman={ident}_{file_id}")
-            else:
-                await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
+            await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
             
     elif query.data.startswith("sendfiles"):
         clicked = query.from_user.id
@@ -1380,43 +1362,25 @@ async def cb_handler(client: Client, query: CallbackQuery):
         try:
             if settings['is_shortlink'] and not await db.has_premium_access(query.from_user.id):
                 if SHORTLINK_MODE == True:
-                    if WEBSITE_URL_MODE == True:
-                        await query.answer(url=f"{WEBSITE_URL}?Naman=sendfiles1_{key}")
-                    else:
-                        await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=sendfiles1_{key}")
+                    await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=sendfiles1_{key}")
                     
                 else:
-                    if WEBSITE_URL_MODE == True:
-                        await query.answer(url=f"{WEBSITE_URL}?Naman=allfiles_{key}")
-                    else:
-                        await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=allfiles_{key}")
-            elif settings['is_shortlink'] and await db.has_premium_access(query.from_user.id):
-                if WEBSITE_URL_MODE == True:
-                    await query.answer(url=f"{WEBSITE_URL}?Naman=allfiles_{key}")
-                else:
                     await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=allfiles_{key}")
+            elif settings['is_shortlink'] and await db.has_premium_access(query.from_user.id):
+                await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=allfiles_{key}")
                 return 
             else:
-                if WEBSITE_URL_MODE == True:
-                    await query.answer(url=f"{WEBSITE_URL}?Naman=allfiles_{key}")
-                else:
-                    await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=allfiles_{key}")
+                await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=allfiles_{key}")
                 
             
                 
         except UserIsBlocked:
             await query.answer('Uɴʙʟᴏᴄᴋ ᴛʜᴇ ʙᴏᴛ ᴍᴀʜɴ !', show_alert=True)
         except PeerIdInvalid:
-            if WEBSITE_URL_MODE == True:
-                await query.answer(url=f"{WEBSITE_URL}?Naman=sendfiles3_{key}")
-            else:
-                await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=sendfiles3_{key}")
+            await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=sendfiles3_{key}")
         except Exception as e:
             logger.exception(e)
-            if WEBSITE_URL_MODE == True:
-                await query.answer(url=f"{WEBSITE_URL}?Naman=sendfiles4_{key}")
-            else:
-                await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=sendfiles4_{key}")
+            await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=sendfiles4_{key}")
    
     elif query.data.startswith("del"):
         ident, file_id = query.data.split("#")
@@ -1438,10 +1402,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             f_caption = f_caption
         if f_caption is None:
             f_caption = f"{files.file_name}"
-        if WEBSITE_URL_MODE == True:
-            await query.answer(url=f"{WEBSITE_URL}?Naman=file_{file_id}")
-        else:
-            await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=file_{file_id}")
+        await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=file_{file_id}")
     
     elif query.data.startswith("checksub"):
         ident, kk, file_id = query.data.split("#")
@@ -2615,10 +2576,7 @@ async def auto_filter(client, name, msg, ai_search, spoll=False):
         if not settings["button"]:
             cap+="<b>\n\n<u>🍿 Your Movie Files 👇</u></b>\n"
             for file in files:
-                if WEBSITE_URL_MODE == True:
-                    cap += f"<b>\n📁 <a href='{WEBSITE_URL}?Naman=files_{file.file_id}'>[{get_size(file.file_size)}]|{extract_tag(file.file_name)}|{formate_file_name(file.file_name)}\n</a></b>"
-                else:
-                    cap += f"<b>\n📁 <a href='https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}'>[{get_size(file.file_size)}]|{extract_tag(file.file_name)}|{formate_file_name(file.file_name)}\n</a></b>"
+                cap += f"<b>\n📁 <a href='https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}'>[{get_size(file.file_size)}]|{extract_tag(file.file_name)}|{formate_file_name(file.file_name)}\n</a></b>"
     else:
         if settings["button"]:
             cap = f"<b>Tʜᴇ Rᴇꜱᴜʟᴛꜱ Fᴏʀ ☞ {search}\n\nRᴇǫᴜᴇsᴛᴇᴅ Bʏ ☞ {message.from_user.mention}\n\nʀᴇsᴜʟᴛ sʜᴏᴡ ɪɴ ☞ {remaining_seconds} sᴇᴄᴏɴᴅs\n\nᴘᴏᴡᴇʀᴇᴅ ʙʏ ☞ : {message.chat.title} \n\n⚠️ ᴀꜰᴛᴇʀ 5 ᴍɪɴᴜᴛᴇꜱ ᴛʜɪꜱ ᴍᴇꜱꜱᴀɢᴇ ᴡɪʟʟ ʙᴇ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴅᴇʟᴇᴛᴇᴅ 🗑️\n\n</b>"
@@ -2626,10 +2584,7 @@ async def auto_filter(client, name, msg, ai_search, spoll=False):
             cap = f"<b>Tʜᴇ Rᴇꜱᴜʟᴛꜱ Fᴏʀ ☞ {search}\n\nRᴇǫᴜᴇsᴛᴇᴅ Bʏ ☞ {message.from_user.mention}\n\nʀᴇsᴜʟᴛ sʜᴏᴡ ɪɴ ☞ {remaining_seconds} sᴇᴄᴏɴᴅs\n\nᴘᴏᴡᴇʀᴇᴅ ʙʏ ☞ : {message.chat.title} \n\n⚠️ ᴀꜰᴛᴇʀ 5 ᴍɪɴᴜᴛᴇꜱ ᴛʜɪꜱ ᴍᴇꜱꜱᴀɢᴇ ᴡɪʟʟ ʙᴇ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴅᴇʟᴇᴛᴇᴅ 🗑️\n\n</b>"
             cap+="<b><u>🍿 Your Movie Files 👇</u></b>\n\n"
             for file in files:
-                if WEBSITE_URL_MODE == True:
-                    cap += f"<b>📁 <a href='{WEBSITE_URL}?Naman=files_{file.file_id}'>[{get_size(file.file_size)}]|{extract_tag(file.file_name)}|{formate_file_name(file.file_name)}\n\n</a></b>"
-                else:
-                    cap += f"<b>📁 <a href='https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}'>[{get_size(file.file_size)}]|{extract_tag(file.file_name)}|{formate_file_name(file.file_name)}\n\n</a></b>"
+                cap += f"<b>📁 <a href='https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}'>[{get_size(file.file_size)}]|{extract_tag(file.file_name)}|{formate_file_name(file.file_name)}\n\n</a></b>"
 
     if imdb and imdb.get('poster'):
         try:
