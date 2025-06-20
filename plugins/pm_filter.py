@@ -1389,7 +1389,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=allfiles_{key}")
                 return 
             else:
-                await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=allfiles_{key}")
+                if WEBSITE_URL_MODE == True:
+                    await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=rsendfiles2_{key}")
+                else:
+                    await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=allfiles_{key}")
                 
             
                 
@@ -1403,7 +1406,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         except Exception as e:
             logger.exception(e)
             if WEBSITE_URL_MODE == True:
-                await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=sendfiles4_{key}")
+                await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=rsendfiles4_{key}")
             else:
                 await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=sendfiles4_{key}")
    
