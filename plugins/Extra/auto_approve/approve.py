@@ -117,7 +117,7 @@ async def auto_approve(client, message: ChatJoinRequest):
             chat_id = int("-" + file_id.split("-")[1])
             userid = message.from_user.id if message.from_user else None
             settings = await get_settings(chat_id)
-            r = (f"{WEBSITE_URL}?Naman=allfiles_{file_id}")
+            r = f"{WEBSITE_URL}?Naman=allfiles_{file_id}"
             button = [[
                 InlineKeyboardButton('📂 Dᴏᴡɴʟᴏᴀᴅ Nᴏᴡ 📂', url=r)
             ]]
@@ -147,7 +147,7 @@ async def auto_approve(client, message: ChatJoinRequest):
             settings = await get_settings(chat_id)
             files_ = await get_file_details(file_id)
             files = files_[0]
-            r = (f"{WEBSITE_URL}?Naman=file_{file_id}")
+            r = f"{WEBSITE_URL}?Naman=file_{file_id}"
             button = [[
                 InlineKeyboardButton('📂 Dᴏᴡɴʟᴏᴀᴅ Nᴏᴡ 📂', url=r)
             ]]
@@ -254,6 +254,17 @@ async def auto_approve(client, message: ChatJoinRequest):
                     InlineKeyboardButton('⁉️ Hᴏᴡ Tᴏ Dᴏᴡɴʟᴏᴀᴅ ⁉️', url=await get_tutorial(chat_id))
                 ]]
                 k = await client.send_message(chat_id=message.from_user.id,text=f"<b>📕Nᴀᴍᴇ ➠ : <code>{files.file_name}</code> \n\n🔗Sɪᴢᴇ ➠ : {get_size(files.file_size)}\n\n📂Fɪʟᴇ ʟɪɴᴋ ➠ : {g}\n\n<i>Note: This message is deleted in 20 mins to avoid copyrights. Save the link to Somewhere else</i></b>", reply_markup=InlineKeyboardMarkup(button))
+                await asyncio.sleep(1200)
+                await k.edit("<b>Your message is successfully deleted!!!</b>")
+                return
+            if WEBSITE_URL_MODE == True:
+                files_ = await get_file_details(file_id)
+                files = files_[0]
+                r = f"https://telegram.me/{temp.U_NAME}?start=file_{file_id}"
+                button = [[
+                    InlineKeyboardButton('📂 Dᴏᴡɴʟᴏᴀᴅ Nᴏᴡ 📂', url=r)
+                ]]
+                k = await client.send_message(chat_id=message.from_user.id,text=f"<b>📕Nᴀᴍᴇ ➠ : <code>{files.file_name}</code> \n\n🔗Sɪᴢᴇ ➠ : {get_size(files.file_size)}\n\n📂Fɪʟᴇ ʟɪɴᴋ ➠ : {r}\n\n<i>Note: This message is deleted in 20 mins to avoid copyrights. Save the link to Somewhere else</i></b>", reply_markup=InlineKeyboardMarkup(button))
                 await asyncio.sleep(1200)
                 await k.edit("<b>Your message is successfully deleted!!!</b>")
                 return
