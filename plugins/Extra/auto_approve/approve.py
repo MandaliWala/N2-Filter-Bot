@@ -113,6 +113,19 @@ async def auto_approve(client, message: ChatJoinRequest):
                     text="<b>Invalid link or Expired link !</b>",
                     protect_content=True
                 )
+        if data.startswith("rsendfiles"):
+            chat_id = int("-" + file_id.split("-")[1])
+            userid = message.from_user.id if message.from_user else None
+            settings = await get_settings(chat_id)
+            r = (f"{WEBSITE_URL}?Naman=allfiles_{file_id}")
+            button = [[
+                InlineKeyboardButton('📂 Dᴏᴡɴʟᴏᴀᴅ Nᴏᴡ 📂', url=r)
+            ]]
+            k = await client.send_message(chat_id=message.from_user.id,text=f"<b>Get All Files in a Single Click!!!\n\n📂 ʟɪɴᴋ ➠ : {r}\n\n<i>Note: This message is deleted in 5 mins to avoid copyrights. Save the link to Somewhere else</i></b>", reply_markup=InlineKeyboardMarkup(button))
+            await asyncio.sleep(300)
+            await k.edit("<b>Your message is successfully deleted!!!</b>")
+            return
+
         if data.startswith("sendfiles"):
             chat_id = int("-" + file_id.split("-")[1])
             userid = message.from_user.id if message.from_user else None
@@ -126,8 +139,23 @@ async def auto_approve(client, message: ChatJoinRequest):
             k = await client.send_message(chat_id=message.from_user.id,text=f"<b>Get All Files in a Single Click!!!\n\n📂 ʟɪɴᴋ ➠ : {g}\n\n<i>Note: This message is deleted in 5 mins to avoid copyrights. Save the link to Somewhere else</i></b>", reply_markup=InlineKeyboardMarkup(button))
             await asyncio.sleep(300)
             await k.edit("<b>Your message is successfully deleted!!!</b>")
-            return   
+            return
     
+        elif data.startswith("redirect"):
+            user = message.from_user.id
+            chat_id = temp.SHORT.get(user)
+            settings = await get_settings(chat_id)
+            files_ = await get_file_details(file_id)
+            files = files_[0]
+            r = (f"{WEBSITE_URL}?Naman=file_{file_id}")
+            button = [[
+                InlineKeyboardButton('📂 Dᴏᴡɴʟᴏᴀᴅ Nᴏᴡ 📂', url=r)
+            ]]
+            k = await client.send_message(chat_id=user,text=f"<b>📕Nᴀᴍᴇ ➠ : <code>{files.file_name}</code> \n\n🔗Sɪᴢᴇ ➠ : {get_size(files.file_size)}\n\n📂Fɪʟᴇ ʟɪɴᴋ ➠ : {r}\n\n<i>Note: This message is deleted in 20 mins to avoid copyrights. Save the link to Somewhere else</i></b>", reply_markup=InlineKeyboardMarkup(button))
+            await asyncio.sleep(1200)
+            await k.edit("<b>Your message is successfully deleted!!!</b>")
+            return
+
         elif data.startswith("short"):
             user = message.from_user.id
             chat_id = temp.SHORT.get(user)

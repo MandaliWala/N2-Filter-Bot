@@ -418,7 +418,7 @@ async def start(client, message):
         chat_id = int("-" + file_id.split("-")[1])
         userid = message.from_user.id if message.from_user else None
         settings = await get_settings(chat_id)
-        r = (f"{WEBSITE_URL}?Naman=file_{file_id}")
+        r = (f"{WEBSITE_URL}?Naman=allfiles_{file_id}")
         k = await client.send_message(chat_id=message.from_user.id,text=f"<b>Get All Files in a Single Click!!!\n\n📂 ʟɪɴᴋ ➠ : {r}\n\n<i>Note: This message is deleted in 5 mins to avoid copyrights. Save the link to Somewhere else</i></b>", reply_markup=InlineKeyboardMarkup(
                 [
                     [
