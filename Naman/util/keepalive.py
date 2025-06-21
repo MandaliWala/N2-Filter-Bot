@@ -13,7 +13,7 @@ async def keep_alive():
             try:
                 async with session.get(URL) as resp:
                     if resp.status != 200:
-                        logging.warning(f"⚠️ Ping Error! Status: {resp.status}")
+                        logging.info(f"⚠️ Ping Error! Status: {resp.status}")
             except Exception as e:
                 logging.error(f"❌ Ping Failed: {e}")
 
