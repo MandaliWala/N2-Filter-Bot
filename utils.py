@@ -79,9 +79,9 @@ async def is_subscribed(bot, query):
                 return True
         return False
 
-async def is_multi_subscribed(bot, query, channels):
+async def is_multi_subscribed(bot, query):
     btn = []
-    for channel_id in channels:
+    for channel_id in MULTI_FSUB:
         try:
             chat = await bot.get_chat(int(channel_id))
             invite_link = await bot.export_chat_invite_link(int(channel_id))

@@ -54,7 +54,6 @@ class Database:
         'is_shortlink': IS_SHORTLINK,
         'tutorial': TUTORIAL,
         'is_tutorial': IS_TUTORIAL,
-        'fsub': MULTI_FSUB,
     }
     
     def __init__(self, database_name):
