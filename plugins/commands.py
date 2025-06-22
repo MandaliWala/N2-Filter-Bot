@@ -1,6 +1,6 @@
 import os, string, logging, random, asyncio, time, datetime, re, sys, json, base64
 from Script import script
-from bot import req_link
+from bot inport req_link
 from pyrogram import Client, filters, enums
 from pyrogram.errors import ChatAdminRequired, FloodWait
 from pyrogram.types import *
