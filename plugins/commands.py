@@ -1,6 +1,5 @@
 import os, string, logging, random, asyncio, time, datetime, re, sys, json, base64
 from Script import script
-from bot inport req_link
 from pyrogram import Client, filters, enums
 from pyrogram.errors import ChatAdminRequired, FloodWait
 from pyrogram.types import *
@@ -109,7 +108,7 @@ async def start(client, message):
     if AUTH_CHANNEL and not await is_subscribed(client, message):
         try:
             if REQUEST_TO_JOIN_MODE == True:
-                invite_link = req_link
+                invite_link = await client.create_chat_invite_link(chat_id=(int(AUTH_CHANNEL)), creates_join_request=True)
             else:
                 invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))
         except ChatAdminRequired:
