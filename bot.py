@@ -36,10 +36,10 @@ ppath = "plugins/*.py"
 files = glob.glob(ppath)
 NamanBot.start()
 
-async def get_req_link(client):
-    if AUTH_CHANNEL:
-        if REQUEST_TO_JOIN_MODE == True:
-            req_link = await client.create_chat_invite_link(chat_id=(int(AUTH_CHANNEL)), creates_join_request=True)
+
+if AUTH_CHANNEL:
+    if REQUEST_TO_JOIN_MODE == True:
+        req_link = await NamanBot.create_chat_invite_link(chat_id=(int(AUTH_CHANNEL)), creates_join_request=True)
 
 async def start():
     print('\n')
