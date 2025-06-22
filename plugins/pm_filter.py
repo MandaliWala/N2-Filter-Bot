@@ -1434,7 +1434,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     
     elif query.data.startswith("checksub"):
         ident, kk, file_id = query.data.split("#")
-        channels = (await get_settings(int(query.from_user.id))).get('fsub')
+        channels = MULTI_FSUB
         if channels:
             btn = await is_multi_subscribed(client, query, channels)
             if btn:
