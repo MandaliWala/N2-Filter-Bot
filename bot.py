@@ -37,6 +37,9 @@ files = glob.glob(ppath)
 NamanBot.start()
 
 
+if AUTH_CHANNEL:
+    if REQUEST_TO_JOIN_MODE == True:
+        req_link = await NamanBot.create_chat_invite_link(chat_id=(int(AUTH_CHANNEL)), creates_join_request=True)
 
 async def start():
     print('\n')
@@ -85,9 +88,6 @@ async def start():
     now = datetime.now(tz)
     time = now.strftime("%H:%M:%S %p")
     await NamanBot.send_message(chat_id=LOG_CHANNEL, text=script.RESTART_TXT.format(temp.U_NAME, temp.B_NAME, today, time))
-    if AUTH_CHANNEL:
-        if REQUEST_TO_JOIN_MODE == True:
-            req_link = await NamanBot.create_chat_invite_link(chat_id=(int(AUTH_CHANNEL)), creates_join_request=True)
     app = web.AppRunner(await web_server())
     await app.setup()
     bind_address = "0.0.0.0"
