@@ -32,7 +32,7 @@ SPELL_IMG = environ.get("SPELL_IMG", "https://te.legra.ph/file/15c1ad448dfe472a5
 # Admins, Channels & Users
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002137528664'))
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '6302921275 5019668523').split()]
-CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002075429339 -1002145382878 -1002004849968 -1002073480988 -1002121649557 -1001749313075 -1002077178570 -1002048583251 -1002019402843 -1002199963727 -1002148773240 -1001925233125 -1002020242463 -1002165297790 -1002158385438 -1002026546209 -1002218808599 -1001359686523 -1002177674758 -1002239734551 -1002416164217 -1002126324229 -1001992468069 -1002454842046 -1002369988753 -1002132149037 -1001971879597').split()]
+CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '').split()]
 auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '').split()]
 AUTH_USERS = (auth_users + ADMINS) if auth_users else []
 MOVIE_UPDATE_CHANNEL = int(environ.get('MOVIE_UPDATE_CHANNEL', '-1002458070966'))
