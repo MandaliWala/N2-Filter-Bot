@@ -65,7 +65,7 @@ async def save_file(media):
     # TODO: Find better way to get same file_id for same media to avoid duplicates
     file_id = unpack_new_file_id(media.file_id)
     file_name = re.sub(r"(_|\-|\.|\+)", " ", str(media.file_name))
-    file_caption = re.sub(r"(⚡️Join:- \[@BlackDeath_0\]‌‌)|(EonMovies)|(JOIN 💎 : @M2LINKS)|@\w+|(_|\- |\.|\+|\[|\]| \[| \]\ )", " ", str(media.caption))
+    file_caption = re.sub(r"(❤️‍🔥 Join ~ [ @Moonknight_media ])|(🤖 Join Us \[@BoB_Files1\])|(𝗧𝗛𝗘 𝗣𝗥𝗢𝗙𝗘𝗦𝗦𝗢𝗥 )|(𝙿𝚘𝚠𝚎𝚛e𝚍 𝙱𝚢 ➥  @Theprofessers)|(❤️‍🔥 Join ~ [ @Moonknight_media ])|(\n🔸 Upload By \[@BlackDeath_0\])|(\n❤️‍🔥 Join ~ \[@Moonknight_media\])|(@Ac_Linkzz)|(\n⚡️Join:- \[@BlackDeath_0\]‌‌)|(EonMovies)|(\nJOIN 💎 : @M2LINKS)|@\w+|(_|\- |\.|\+|\[|\]| \[| \]\ )", " ", str(media.caption))
     try:
         if await Media.count_documents({'file_id': file_id}, limit=1):
             logger.warning(f'{getattr(media, "file_name", "NO_FILE")} is already saved in primary DB !')
