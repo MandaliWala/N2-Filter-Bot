@@ -116,8 +116,6 @@ async def get_search_results(query, file_type=None, max_results=10, offset=0, fi
 
     filter = {'file_name': regex}
     
-    if file_type:
-        filter['file_type'] = file_type
 
 
     total_results = ((await Media.count_documents(filter))+(await Media2.count_documents(filter)))
@@ -173,8 +171,6 @@ async def get_custom_search_results(query, file_type=None, max_results=10, offse
 
     filter = {'file_name': regex}
     
-    if file_type:
-        filter['file_type'] = file_type
 
 
     total_results = ((await Media.count_documents(filter))+(await Media2.count_documents(filter)))
@@ -230,8 +226,6 @@ async def get_search1_results(query, file_type=None, max_results=10, offset=0, f
 
     filter = {'file_name': regex}
     
-    if file_type:
-        filter['file_type'] = file_type
 
 
     total_results = await Media.count_documents(filter)
@@ -272,8 +266,6 @@ async def get_search2_results(query, file_type=None, max_results=10, offset=0, f
 
     filter = {'file_name': regex}
     
-    if file_type:
-        filter['file_type'] = file_type
 
 
     total_results = await Media2.count_documents(filter)
@@ -310,8 +302,6 @@ async def get_precise_search_results(query, file_type=None, max_results=10, offs
 
     filter = {'file_name': regex}
     
-    if file_type:
-        filter['file_type'] = file_type
 
 
     total_results = ((await Media.count_documents(filter))+(await Media2.count_documents(filter)))
