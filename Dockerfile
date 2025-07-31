@@ -1,6 +1,6 @@
 # Don't Remove Credit @DigitalGalaxyHQ
 # Ask Doubt on telegram @Spider_Man_02
-FROM python:3.12.2
+FROM python:3.11.9
 
 RUN apt update && apt upgrade -y
 RUN apt install git -y
