@@ -144,9 +144,6 @@ else:
     ON_HEROKU = False
 URL = environ.get("URL", "")
 
-#Auto forward info
-FROM_DB = [int(fdb) for fdb in environ.get('FROM_DB', '').split() if re.match(r'^-?\d+$', fdb)]
-TARGET_DB = int(environ.get("TARGET_DB", ""))
 
 # Website Info:
 WEBSITE_URL_MODE = bool(environ.get('WEBSITE_URL_MODE', False)) # Set True or False
