@@ -11,7 +11,7 @@ from pyrogram.errors import UserIsBlocked, MessageNotModified, PeerIdInvalid
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
 from utils import get_size, extract_tag, is_subscribed, is_multi_subscribed, get_poster, search_gagala, temp, get_settings, save_group_settings, get_shortlink, get_tutorial, send_all, get_cap, imdb
 from database.users_chats_db import db
-from database.ia_filterdb import Media, Media2, get_file_details, get_search_results, get_custom_search_results, get_search1_results, get_search2_results, get_precise_search_results, get_bad_files, db as clientDB, db2 as clientDB2
+from database.ia_filterdb import Media, Media2, get_file_details, get_custom_search_results, get_bad_files, db as clientDB, db2 as clientDB2
 from database.filters_mdb import del_all, find_filter, get_filters
 from database.connections_mdb import active_connection, all_connections, delete_connection, if_active, make_active, make_inactive
 from database.gfilters_mdb import find_gfilter, get_gfilters, del_allg
