@@ -1,9 +1,4 @@
-import time
-import asyncio
-import platform
-import os
-import shutil
-import random
+import time, asyncio, platform, os, shutil, random
 from pyrogram import Client, filters
 
 CMD = ["/", "."]
