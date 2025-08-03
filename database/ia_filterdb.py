@@ -158,15 +158,15 @@ async def get_custom_search_results(query, file_type=None, max_results=10, offse
         #query = query.replace(' ', r'(\s|\.|\+|\-|_)')
         #raw_pattern = r'(\s|_|\-|\.|\+)' + query + r'(\s|_|\-|\.|\+)'
     if not query:
-        raw_pattern = "."
-    elif " " not in query:
-        raw_pattern = r"(\b|[\.\+\-_])" + query + r"(\b|[\.\+\-_])"
+        raw_pattern = '.'
+    elif ' ' not in query:
+        raw_pattern = r'(\b|[\.\+\-_])' + query + r'(\b|[\.\+\-_])'
     else:
-        raw_pattern = query.replace(" ", r".*[\s\.\+\-_()\[\]]")
+        raw_pattern = query.replace(' ', r'.*[\s\.\+\-_]')
     try:
         regex = re.compile(raw_pattern, flags=re.IGNORECASE)
-    except re.error:
-        return [], "", 0
+    except:
+        return []
 
     filter = {'file_name': regex}
     
