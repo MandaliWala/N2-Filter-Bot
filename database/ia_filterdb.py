@@ -175,9 +175,8 @@ async def get_custom_search_results(query, file_type=None, max_results=10, offse
     cursor = Media.find(filter).sort('$natural', -1).skip(offset).limit(max_results)
     fileList1 = await cursor.to_list(length=max_results)
 
-    remaining_results = max_results - len(fileList1)
-    cursor2 = Media2.find(filter).sort('$natural', -1).skip(offset).limit(remaining_results)
-    fileList2 = await cursor2.to_list(length=remaining_results)
+    cursor2 = Media2.find(filter).sort('$natural', -1).skip(offset).limit(max_results - len(fileList1))
+    fileList2 = await cursor2.to_list(length=(max_results - len(fileList1)))
 
     files = fileList1 + fileList2
     next_offset = offset + len(files)
