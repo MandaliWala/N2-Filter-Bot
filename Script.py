@@ -259,7 +259,7 @@ Aᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅs:
 📅 Dᴀᴛᴇ : <code>{}</code>
 ⏰ Tɪᴍᴇ : <code>{}</code>
 🌐 Tɪᴍᴇᴢᴏɴᴇ : <code>Asia/Kolkata</code>
-🛠️ Bᴜɪʟᴅ Sᴛᴀᴛᴜs: {}</code></b>"""
+🛠️ Bᴜɪʟᴅ Sᴛᴀᴛᴜs: <code>{}</code></b>"""
 
     LOGO = """
 
