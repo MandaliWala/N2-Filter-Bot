@@ -725,9 +725,9 @@ async def channel_info(bot, message):
 
 
 @Client.on_message(filters.command('logs') & filters.user(ADMINS))
-async def log_file(bot, message):
+async def send_log_file(bot, message):
     try:
-        await message.reply_document('Naruto.LOG')
+        await message.reply_document('log.txt')
     except Exception as e:
         await message.reply(str(e))
 
@@ -1495,34 +1495,21 @@ async def removetutorial(bot, message):
 
 @Client.on_message(filters.command("restart") & filters.user(ADMINS))
 async def stop_button(bot, message):
-    msg = await bot.send_message(text="**🔄 𝙿𝚁𝙾𝙲𝙴𝚂𝚂𝙴𝚂 𝚂𝚃𝙾𝙿𝙴𝙳. 𝙱𝙾𝚃 𝙸𝚂 𝚁𝙴𝚂𝚃𝙰𝚁𝚃𝙸𝙽𝙶...**", chat_id=message.chat.id)       
+    msg = await bot.send_message(text="**🔄 𝙿𝚁𝙾𝙲𝙴𝚂𝚂𝙴𝚂 𝚂𝚃𝙾𝙿𝙴𝙳. 𝙱𝙾𝚃 𝙸𝚂 𝚁𝙴𝚂𝚃𝙰𝚁𝚃𝙸𝙽𝙶...**", chat_id=message.chat.id)
+    try: os.remove('log.txt')
+    except: pass
     await asyncio.sleep(3)
     await msg.edit("**✅️ 𝙱𝙾𝚃 𝙸𝚂 𝚁𝙴𝚂𝚃𝙰𝚁𝚃𝙴𝙳. 𝙽𝙾𝚆 𝚈𝙾𝚄 𝙲𝙰𝙽 𝚄𝚂𝙴 𝙼𝙴**")
-    os.execl(sys.executable, sys.executable, *sys.argv)
+    os.execl(sys.executable, sys.executable, *sys.argv) 
 
-@Client.on_message(filters.command("nofsub"))
-async def nofsub(client, message):
-    userid = message.from_user.id if message.from_user else None
-    if not userid:
-        return await message.reply(f"<b>You are anonymous admin. Turn off anonymous admin and try again this command</b>")
-    chat_type = message.chat.type
-    if chat_type == enums.ChatType.PRIVATE:
-        return await message.reply_text("<b>This Command Work Only in group\n\nTry it in your own group</b>")
-    elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        grpid = message.chat.id
-        title = message.chat.title
-    else:
-        return
-    userid = message.from_user.id
-    user = await client.get_chat_member(grpid, userid)
-    if user.status != enums.ChatMemberStatus.ADMINISTRATOR and user.status != enums.ChatMemberStatus.OWNER and str(userid) not in ADMINS:
-        return
-    else:
-        pass
-    await save_group_settings(grpid, 'fsub', None)
-    await message.reply_text(f"<b>Successfully removed force subscribe from {title}.</b>")
-
-        
+@Client.on_message(filters.command("update") & filters.user(ADMINS))
+async def update_gitpull(client, message):
+    try:
+        os.system("git pull")
+        await message.reply_text("ᴜᴩᴅᴀᴛᴇᴅ & ʀᴇꜱᴛᴀʀᴛɪɴɢ...")
+        os.execl(sys.executable, sys.executable, *sys.argv)
+    except Exception as e:
+        await message.reply(e)
 
 @Client.on_message(filters.command("add_premium"))
 async def give_premium_cmd_handler(client, message):
