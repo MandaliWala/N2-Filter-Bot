@@ -115,6 +115,7 @@ SHORTLINK_URL = environ.get('SHORTLINK_URL', 'api.shareus.io')
 SHORTLINK_API = environ.get('SHORTLINK_API', 'iwPFT7ziOCXWt11Q9bjf1S7Ojnt1')
 
 # Others
+VERSION = environ.get("VERSION", "ᴠ3.8.1 [ʙᴇᴛᴀ]")
 MAX_B_TN = environ.get("MAX_B_TN", "6")
 PORT = environ.get("PORT", "8080")
 MSG_ALRT = environ.get('MSG_ALRT', ' ᴅᴀᴛᴛᴇʙᴀʏᴏ ​!! ')

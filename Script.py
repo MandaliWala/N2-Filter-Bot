@@ -1,6 +1,7 @@
 # Don't Remove Credit @DigitalGalaxyHQ
 # Ask Doubt on telegram @Spider_Man_02
 
+from info import VERSION
 
 class script(object):
     START_TXT = """<b><blockquote>Rᴀᴍ Rᴀᴍ {}, ᴍʏ ɴᴀᴍᴇ ɪs <a href=https://t.me/{}>{}</a></blockquote>
@@ -19,7 +20,7 @@ Hᴇʀᴇ Is Tʜᴇ Hᴇʟᴘ Fᴏʀ Mʏ Cᴏᴍᴍᴀɴᴅs.</b>"""
 ‣ ʟᴀɴɢᴜᴀɢᴇ : <a href='https://www.python.org/download/releases/3.0/'>ᴘʏᴛʜᴏɴ 3</a> 
 ‣ ᴅᴀᴛᴀ ʙᴀsᴇ : <a href='https://www.mongodb.com/'>ᴍᴏɴɢᴏ ᴅʙ</a> 
 ‣ ʙᴏᴛ sᴇʀᴠᴇʀ : <a href='https://koyeb.com'>ᴋᴏʏᴇʙ</a> 
-‣ ʙᴜɪʟᴅ sᴛᴀᴛᴜs : ᴠ3.8.1 [ʙᴇᴛᴀ]</b>"""
+‣ ʙᴜɪʟᴅ sᴛᴀᴛᴜs : {VERSION}</b>"""
     
     
 

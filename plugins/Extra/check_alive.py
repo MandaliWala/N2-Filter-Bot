@@ -1,4 +1,5 @@
 import time, asyncio, platform, os, shutil, random
+from info import VERSION
 from pyrogram import Client, filters
 
 CMD = ["/", "."]
@@ -67,7 +68,7 @@ def get_system_info():
         f"🔄 **System Uptime:** {system_uptime}\n"
         f"💾 **RAM Usage:** {used_ram} / {total_ram}\n"
         f"📁 **Disk Usage:** {used_disk} / {total_disk}\n"
-        "🉐 **Vᴇʀsɪᴏɴ:** ᴠ3.8.1 [ʙᴇᴛᴀ]"
+        f"🉐 **Vᴇʀsɪᴏɴ:** {VERSION} [ʙᴇᴛᴀ]"
     )
     return system_info
 
