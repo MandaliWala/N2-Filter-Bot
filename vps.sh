@@ -7,7 +7,7 @@ apt install -y git python3 python3-venv python3-pip tmux
 # Clone the repo 
 if [ -z $UPSTREAM_REPO ]; then
     echo "Cloning main Repository"
-    git clone https://github.com/MandaliWala/N2-Filter-Bot/tree/main /N2FilterBot
+    git clone https://github.com/MandaliWala/N2-Filter-Bot/origin/main /N2FilterBot
 else
     echo "Cloning Custom Repo from $UPSTREAM_REPO"
     git clone $UPSTREAM_REPO /N2FilterBot
