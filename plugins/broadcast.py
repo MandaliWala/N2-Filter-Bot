@@ -30,13 +30,13 @@ async def pm_broadcast(bot, message):
                     elif sh == "Error":
                         failed += 1
                 done += 1
-                if not done % 20:
+                if not done % 50:
                     await sts.edit(f"Broadcast in progress:\n\nTotal Users {total_users}\nCompleted: {done} / {total_users}\nSuccess: {success}\nBlocked: {blocked}\nDeleted: {deleted}")    
             else:
                 # Handle the case where 'id' key is missing in the user dictionary 
                 done += 1
                 failed += 1
-                if not done % 20:
+                if not done % 50:
                     await sts.edit(f"Broadcast in progress:\n\nTotal Users {total_users}\nCompleted: {done} / {total_users}\nSuccess: {success}\nBlocked: {blocked}\nDeleted: {deleted}")    
     
         time_taken = datetime.timedelta(seconds=int(time.time()-start_time))
@@ -65,7 +65,7 @@ async def broadcast_group(bot, message):
         elif sh == "Error":
                 failed += 1
         done += 1
-        if not done % 20:
+        if not done % 50:
             await sts.edit(f"Broadcast in progress:\n\nTotal Groups {total_groups}\nCompleted: {done} / {total_groups}\nSuccess: {success}")    
     time_taken = datetime.timedelta(seconds=int(time.time()-start_time))
     await sts.edit(f"Broadcast Completed:\nCompleted in {time_taken} seconds.\n\nTotal Groups {total_groups}\nCompleted: {done} / {total_groups}\nSuccess: {success}")
