@@ -17,7 +17,7 @@ else
 fi
 
 # Upgrade pip and install requirements
-cd /ProfessorBot
+cd /N2FilterBot
 pip install -U -r requirements.txt --force-reinstall
 
 # Start bot
