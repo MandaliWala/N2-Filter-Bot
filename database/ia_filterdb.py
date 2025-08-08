@@ -195,7 +195,7 @@ async def get_search1_results(query, file_type=None, max_results=10, offset=0, f
     elif ' ' not in query:
         raw_pattern = r'(\b|[\.\+\-_])' + re.escape(query) + r'(\b|[\.\+\-_])'
     else:
-        raw_pattern = r'.*[\s\.\+\-_]'.join(map(re.escape, query.split()))
+        raw_pattern = r'[\s\.\+\-_]'.join(map(re.escape, query.split()))
     
     try:
         regex = re.compile(raw_pattern, flags=re.IGNORECASE)
